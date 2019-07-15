@@ -1,12 +1,19 @@
+
 import cv2
 import time
 import numpy as np
 import torch
+import os
 from torch.autograd.variable import Variable
-from src.models import PNet,RNet,ONet
-import src.utils as utils
-import src.image_tools as image_tools
+from hdface.models import PNet,RNet,ONet
+import hdface.utils as utils
+import hdface.image_tools as image_tools
+__author__ = "hanson"
 
+# include hdface/data/pnet.data
+# include hdface/data/rnet.data
+# include hdface/data/onet.data
+# include hdface/data/lnet.data
 class hdface_detector(object):
     """
         P,R,O net face detection and landmarks align
@@ -45,10 +52,11 @@ class hdface_detector(object):
         self.scale_factor = scale_factor
 
     def hdface_init(self):
-        p_model_path = "./data/pnet.data"
-        r_model_path = "./data/rnet.data"
-        o_model_path = "./data/onet.data"
-        l_model_path = "./data/lnet.data"
+        model_folder,_ = os.path.split(os.path.realpath(__file__))
+        p_model_path = os.path.join(model_folder, "data/pnet.data")
+        r_model_path = os.path.join(model_folder, "data/rnet.data")
+        o_model_path = os.path.join(model_folder, "data/onet.data")
+        l_model_path = os.path.join(model_folder, "data/lnet.data")
 
         pnet, rnet, onet, lnet = None, None, None, None
 

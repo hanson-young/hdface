@@ -1,6 +1,7 @@
 #encoding=utf-8
+__author__ = "hanson"
 import cv2
-from src.detect import hdface_detector
+from hdface.hdface import hdface_detector
 import glob,os
 
 if __name__ == '__main__':
