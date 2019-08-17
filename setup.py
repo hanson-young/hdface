@@ -15,7 +15,7 @@ if sys.version_info < (3, 4, 1):
 
 setup(
     name='hdface',
-    version="0.1.2",
+    version="0.1.3",
     description='heils face detector',
     long_description=readme(),
     long_description_content_type="text/markdown",
