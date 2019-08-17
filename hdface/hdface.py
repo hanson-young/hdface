@@ -694,6 +694,10 @@ face candidates:%d, current batch_size:%d"%(num_boxes, batch_size)
                 sq_bboxes = self.square_bbox(bboxs).astype(np.int32)
                 for i in range(bboxs.shape[0]):
                     single = {}
+                    sq_bboxes[i][1] = max(0, sq_bboxes[i][1])
+                    sq_bboxes[i][0] = max(0, sq_bboxes[i][0])
+                    sq_bboxes[i][3] = min(lds_img.shape[0] - 1, sq_bboxes[i][3])
+                    sq_bboxes[i][2] = min(lds_img.shape[1] - 1, sq_bboxes[i][2])
                     patch = lds_img[sq_bboxes[i][1]:sq_bboxes[i][3], sq_bboxes[i][0]:sq_bboxes[i][2], :]
                     cls, reg, landmarks = self.detect_lnet(patch)
                     # box_align

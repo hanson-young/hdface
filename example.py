@@ -6,7 +6,7 @@ import glob,os
 
 if __name__ == '__main__':
 
-    test_image_root = r'/home/handsome/Downloads/temp'
+    test_image_root = r'/media/yj_backup/hanson/safe_mao/ori_safemao/Images/03'
     factor = 1.0
     det = hdface_detector(use_cuda=True)
 
